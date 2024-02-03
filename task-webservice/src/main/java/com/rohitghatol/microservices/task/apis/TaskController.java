@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,7 +35,7 @@ public class TaskController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
+	@GetMapping(headers = "Accept=application/json")
 	public List<TaskDTO> getTasks() {
 		return tasks;
 	}
@@ -45,7 +46,7 @@ public class TaskController {
 	 * @param taskId
 	 * @return
 	 */
-	@RequestMapping(value = "{taskId}", method = RequestMethod.GET, headers = "Accept=application/json")
+	@GetMapping(value = "{taskId}", headers = "Accept=application/json")
 	public TaskDTO getTaskByTaskId(@PathVariable("taskId") String taskId) {
 		TaskDTO taskToReturn = null;
 		for (TaskDTO currentTask : tasks) {
@@ -67,7 +68,7 @@ public class TaskController {
 	 * @param taskId
 	 * @return
 	 */
-	@RequestMapping(value = "/usertask/{userName}", method = RequestMethod.GET, headers = "Accept=application/json")
+	@GetMapping(value = "/usertask/{userName}", headers = "Accept=application/json")
 	public List<TaskDTO> getTasksByUserName(@PathVariable("userName") String userName) {
 		List<TaskDTO> taskListToReturn = new ArrayList<TaskDTO>();
 		for (TaskDTO currentTask : tasks) {
