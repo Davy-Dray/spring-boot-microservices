@@ -5,10 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rohitghatol.microservices.comments.dtos.CommentDTO;
@@ -52,7 +52,7 @@ public class CommentsController {
 	 * @param taskId
 	 * @return
 	 */
-	@RequestMapping(value = "/{taskId}", method = RequestMethod.GET, headers = "Accept=application/json")
+	@GetMapping(value = "/{taskId}", headers = "Accept=application/json")
 	public List<CommentDTO> getCommentsByTaskId(@PathVariable("taskId") String taskId) {
 		List<CommentDTO> commentListToReturn = new ArrayList<CommentDTO>();
 		for (CommentDTO currentComment : comments) {

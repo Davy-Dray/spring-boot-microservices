@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rohitghatol.microservices.user.dto.UserDTO;
@@ -33,7 +33,7 @@ public class UserController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
+	@GetMapping(headers = "Accept=application/json")
 	public List<UserDTO> getUsers() {
 		return users;
 	}
@@ -44,7 +44,7 @@ public class UserController {
 	 * @param userName
 	 * @return
 	 */
-	@RequestMapping(value = "{userName}", method = RequestMethod.GET, headers = "Accept=application/json")
+	@GetMapping(value = "{userName}", headers = "Accept=application/json")
 	public UserDTO getUserByUserName(@PathVariable("userName") String userName) {
 		UserDTO userDtoToReturn = null;
 		for (UserDTO currentUser : users) {
